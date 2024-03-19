@@ -1,0 +1,31 @@
+// message loop
+
+    while(getmessage(&msg, NULL, 0, 0))
+    {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+
+//Game loop
+
+    BOOL bDone = FALSE;
+
+    while(bDone == FALSE)
+    {
+        if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+        {
+            if(msg.message == WM_QUIT)
+                bDone = TRUE;
+
+            else
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }   
+        }
+
+        else
+        {
+            //render
+        }
+    }
